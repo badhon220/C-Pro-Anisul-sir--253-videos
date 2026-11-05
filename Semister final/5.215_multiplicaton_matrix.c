@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int main() {
-int first[10][10],second[10][10],row1,row2,cul1,cul2,i,j;
+int first[10][10],second[10][10],row1,row2,cul1,cul2,i,j,mul[10][10],sum=0;
 printf("Enter row and cul for first matrix:");
 scanf("%d %d",&row1,&cul1);
 printf("Enter row and cul for second matrix:");
@@ -19,10 +19,22 @@ for(i =0;i<row1;i++){
         scanf("%d",&first[i][j]);
     }
 }
-for(i =0;i<row1;i++){
-    for( j=0;j<cul1;j++){
+for(i =0;i<row2;i++){
+    for( j=0;j<cul2;j++){
         printf("Enter element for second matrix [%d][%d]:",i,j);
         scanf("%d",&second[i][j]);
+    }
+}
+// multiplication of two matrices.
+for(i=0;i<row1;i++){
+    for(j=0;j<cul2;j++){
+        for(int k=0;k<cul1;k++){
+        
+            sum = sum+first[i][k]*second[k][j];
+        
+        }
+        mul[i][j]=sum;
+            sum=0;
     }
 }
 printf("First matrix is \n");
@@ -39,7 +51,12 @@ for(i =0;i<row2;i++){
     }
     printf("\n");
 }
-    
-
+printf("Multiplication of two matrix is \n");
+for(i=0;i<row1;i++){
+    for(j=0;j<cul2;j++){
+        printf("%d ",mul[i][j]);
+    }
+    printf("\n");
+}
     return 0;
 }
